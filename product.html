@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./product.css" />
+
+    <script>
+      function check() {
+        if (document.form.productId.value == '') {
+          alert('상품코드를 입력하세요.')
+          document.form.productId.focus()
+          return false
+        }
+        if (document.form.name.value == '') {
+          alert('상품명을 입력하세요.')
+          document.form.name.focus()
+          return false
+        }
+        if (document.form.price.value == '') {
+          alert('가격을 입력하세요.')
+          document.form.price.focus()
+          return false
+        }
+        if (
+          document.form.price.value.length == 0 ||
+          isNaN(document.form.price.value)
+        ) {
+          alert('[가격]\n숫자만 입력하세요.')
+        }
+        if (document.form.price.value < 0) {
+          alert('[가격]\n음수를 입력할 수 없습니다.')
+        }
+        document.form.submit()
+
+        // if (document.form.info.value == '') {
+        //   alert('상세정보를 입력하세요.')
+        //   document.form.info.focus()
+        //   return false
+        // }
+        // if (document.form.manu.value == '') {
+        //   alert('제조사를 입력하세요.')
+        //   document.form.manu.focus()
+        //   return false
+        // }
+        // if (document.form.cate.value == '') {
+        //   alert('분류를 입력하세요.')
+        //   document.form.cate.focus()
+        //   return false
+        // }
+        // if (document.form.stock.value == '') {
+        //   alert('재고를 입력하세요.')
+        //   document.form.stock.focus()
+        //   return false
+        // }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>상품등록화면</h2>
+
+    <form name="form" method="post" action="productProcess.jsp">
+      <table>
+        <tr>
+          <td>상품코드</td>
+          <td>
+            <input
+              type="text"
+              name="productId"
+              placeholder="상품코드를 입력하세요"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>상품명</td>
+          <td><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+          <td>가격</td>
+          <td><input type="text" name="price" /></td>
+        </tr>
+        <tr>
+          <td>상세정보</td>
+          <td><input type="text" name="info" /></td>
+        </tr>
+        <tr>
+          <td>제조사</td>
+          <td><input type="text" name="manu" /></td>
+        </tr>
+        <tr>
+          <td>분류</td>
+          <td><input type="text" name="cate" /></td>
+        </tr>
+        <tr>
+          <td>재고수</td>
+          <td><input type="text" name="stock" /></td>
+        </tr>
+        <tr>
+          <td>상태</td>
+          <td>
+            <input type="radio" value="신규제품" name="status" />신규제품
+            <input type="radio" value="중고제품" name="status" />중고제품
+            <input type="radio" value="재생제품" name="status" />재생제품
+          </td>
+        </tr>
+        <tr>
+          <td class="btn" colspan="2">
+            <input type="button" value="저장" onclick="check()" />
+            <input type="reset" value="취소" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
